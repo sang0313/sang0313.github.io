@@ -6,9 +6,31 @@
     <description>Recent content on Sang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
+    <lastBuildDate>Thu, 23 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sang0313.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Flutter localization</title>
+      <link>https://sang0313.github.io/post/2020-07-23-flutter-localization/</link>
+      <pubDate>Thu, 23 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sang0313.github.io/post/2020-07-23-flutter-localization/</guid>
+      <description>前言 依照官方文件使用多語系實在是太過麻煩，因此這邊選用Easy Localization這個套件，來解決我們的問題。
+此範例專案希望能夠顯示目前使用語系。並且可以在App內切換語系。
+Flutter 官方文件
+Easy Localization官方文件
+建立起始專案 先在建立頁面中建立用來顯示目前語系以及三個語系的切換按鈕。
+套件設定 pubspeec.yaml中加入easy_localization套件。
+dependencies:flutter:sdk:fluttereasy_localization:^2.3.2pubspeec.yaml中設定語系檔的位置。
+flutter:uses-material-design:trueassets:- assets/locales/接著在專案根目錄下建立assets/locales目錄以及四個語系檔(由於iOS和Android台灣繁體中文的格式不同，必須建立兩個檔案)。
+ en.json zh.json zh-Hant-TW.json zh-TW.json  iOS專案設定 打開Runner.xcworkspace，在info頁籤下面的localization區塊加入需要的語系。
+Flutter設定 在main.dart加入下面的設定。
+void main() { runApp( EasyLocalization( child: MyApp(), supportedLocales: [ Locale(&amp;#39;en&amp;#39;), Locale(&amp;#39;zh&amp;#39;, &amp;#39;TW&amp;#39;), Locale.fromSubtags(languageCode: &amp;#39;zh&amp;#39;, scriptCode: &amp;#39;Hant&amp;#39;, countryCode: &amp;#39;TW&amp;#39;), Locale(&amp;#39;zh&amp;#39;), ], fallbackLocale: Locale(&amp;#39;en&amp;#39;), path: &amp;#39;assets/locales&amp;#39;, ), ); } 參數說明：
+ supportedLocales：支援的語系，使用的優先權會依照array內的順序。 fallbackLocale：當手機語言不在支援語言內會採用此語系。 path：語系檔的路徑。  接著先看一下語系檔的格式，打開en.json，可以看到下列內容：
+{ &amp;#34;localization_str_01&amp;#34;: &amp;#34;Current language: {lang}&amp;#34;, &amp;#34;localization_str_02&amp;#34;: &amp;#34;English&amp;#34;, &amp;#34;localization_str_03&amp;#34;: &amp;#34;Traditional Chinese&amp;#34;, &amp;#34;localization_str_04&amp;#34;: &amp;#34;Simplified Chinese&amp;#34;, &amp;#34;localization_str_05&amp;#34;: &amp;#34;Current language: {}&amp;#34; &amp;#34;localization_str_06&amp;#34;: &amp;#34;Flutter Localization&amp;#34; } 一般使用 此套件是採用Json格式來對應，這邊會示範幾種使用的方式。</description>
+    </item>
     
     <item>
       <title>About me</title>
